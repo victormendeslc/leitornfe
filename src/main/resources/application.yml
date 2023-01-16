@@ -1,0 +1,7 @@
+micronaut:
+  application:
+    name: leitornfe
+netty:
+  default:
+    allocator:
+      max-order: 3
