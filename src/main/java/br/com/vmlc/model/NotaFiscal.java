@@ -1,28 +1,20 @@
 package br.com.vmlc.model;
 
+import br.com.vmlc.repository.Index;
 import io.micronaut.serde.annotation.Serdeable;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Serdeable
-@Entity
-@Table
 @Getter
 @Setter
-public class NotaFiscal {
+public class NotaFiscal implements Index {
+    private UUID id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @OneToMany
     private Set<Produto> produtos = new HashSet<>();
-
-    @ManyToOne
-    @JoinColumn(name = "razao_social_id")
     private RazaoSocial razaoSocial;
 }

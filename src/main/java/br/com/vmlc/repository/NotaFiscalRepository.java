@@ -1,9 +1,16 @@
 package br.com.vmlc.repository;
 
-import br.com.vmlc.model.NotaFiscal;
-import io.micronaut.data.annotation.Repository;
-import io.micronaut.data.repository.CrudRepository;
 
-@Repository
-public interface NotaFiscalRepository extends CrudRepository<NotaFiscal, Long> {
+import br.com.vmlc.model.NotaFiscal;
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
+
+@Singleton
+public class NotaFiscalRepository extends Repository<NotaFiscal> {
+
+    @Inject
+    public NotaFiscalRepository(ElasticsearchClient client) {
+        super(client);
+    }
 }
